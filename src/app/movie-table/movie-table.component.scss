@@ -1,0 +1,54 @@
+/* Structure */
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+.movieTitleWidthClass{
+    flex: 0 0 300px;
+ }
+
+ .movieDirectorWidthClass{
+    flex: 0 0 150px;
+ }
+
+ .movieCastWidthClass{
+    flex: 0  0 280px;
+ }
+
+ .movieGenreWidthClass{
+    flex: 0  0 450px;
+ }
+
+ .movieLanguageWidthClass{
+    flex: 0  0 80px;
+ }
+
+ .movieCountryWidthClass{
+    flex: 0  0 80px;
+ }
+
+ .movieRatingWidthClass{
+    flex: 0  0 60px;
+ }
+
+ .movieBudgetWidthClass{
+    flex: 0  0 100px;
+ }
+
+ .movieYearWidthClass{
+    flex: 0  0 50px;
+ }
+
+ .movieTagWidthClass{
+    flex: 0  0 250px;
+ }
+
+ .fill-remaining-space {
+  /* This fills the remaining space, by using flexbox. 
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}

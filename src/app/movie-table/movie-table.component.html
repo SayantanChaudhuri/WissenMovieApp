@@ -1,0 +1,110 @@
+<div [ngClass]="{'dark-theme': isDarkTheme | async}">
+  <div class="mat-app-background">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span>Wissen Movies</span>
+        <span class="fill-remaining-space"></span>
+
+        <mat-slide-toggle [checked]="isDarkTheme | async" (change)="toggleDarkTheme($event.checked)">Dark theme</mat-slide-toggle>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-card>
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Find Movies">
+      </mat-form-field>
+    </mat-card>
+
+    <div class="mat-elevation-z8">
+      <mat-card>
+        <div style="overflow-y: auto">
+          <mat-table [dataSource]="dataSource" matSort>
+
+            <!-- Title Column -->
+            <ng-container cdkColumnDef="movie_title">
+              <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'movieTitleWidthClass'"> Movie Title
+              </mat-header-cell>
+              <mat-cell *cdkCellDef="let element" [ngClass]="'movieTitleWidthClass'"><a href="{{element.movie_imdb_link}}"
+                  target="_blank">
+                  {{element.movie_title}} </a> </mat-cell>
+            </ng-container>
+
+            <!-- Director Column -->
+            <ng-container cdkColumnDef="director_name">
+              <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'movieDirectorWidthClass'"> Director
+              </mat-header-cell>
+              <mat-cell *cdkCellDef="let element" [ngClass]="'movieDirectorWidthClass'"> {{element.director_name}}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Cast Column -->
+            <ng-container cdkColumnDef="cast">
+              <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'movieCastWidthClass'"> Cast
+              </mat-header-cell>
+              <mat-cell *cdkCellDef="let element" [ngClass]="'movieCastWidthClass'"> {{element.cast}} </mat-cell>
+            </ng-container>
+
+            <!-- Genres Column -->
+            <ng-container cdkColumnDef="genres">
+              <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'movieGenreWidthClass'"> Geners
+              </mat-header-cell>
+              <mat-cell *cdkCellDef="let element" [ngClass]="'movieGenreWidthClass'"> {{element.genres}} </mat-cell>
+            </ng-container>
+
+            <!-- Language Column -->
+            <ng-container cdkColumnDef="language">
+              <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'movieLanguageWidthClass'"> Language
+              </mat-header-cell>
+              <mat-cell *cdkCellDef="let element" [ngClass]="'movieLanguageWidthClass'"> {{element.language}}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Country Column -->
+            <ng-container cdkColumnDef="country">
+              <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'movieCountryWidthClass'"> Country
+              </mat-header-cell>
+              <mat-cell *cdkCellDef="let element" [ngClass]="'movieCountryWidthClass'"> {{element.country}} </mat-cell>
+            </ng-container>
+
+            <!-- Rating Column -->
+            <ng-container cdkColumnDef="content_rating">
+              <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'movieRatingWidthClass'"> Rating
+              </mat-header-cell>
+              <mat-cell *cdkCellDef="let element" [ngClass]="'movieRatingWidthClass'"> {{element.content_rating}}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Budget Column -->
+            <ng-container cdkColumnDef="budget">
+              <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'movieBudgetWidthClass'"> Budget
+              </mat-header-cell>
+              <mat-cell *cdkCellDef="let element" [ngClass]="'movieBudgetWidthClass'"> {{element.budget |
+                number:'':'en'}}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Budget Column -->
+            <ng-container cdkColumnDef="title_year">
+              <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'movieYearWidthClass'"> Year
+              </mat-header-cell>
+              <mat-cell *cdkCellDef="let element" [ngClass]="'movieYearWidthClass'"> {{element.title_year}} </mat-cell>
+            </ng-container>
+
+            <!-- Budget Column -->
+            <ng-container cdkColumnDef="plot_keywords">
+              <mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'movieTagWidthClass'"> Tags
+              </mat-header-cell>
+              <mat-cell *cdkCellDef="let element" [ngClass]="'movieTagWidthClass'"> {{element.plot_keywords}}
+              </mat-cell>
+            </ng-container>
+
+            <mat-header-row *cdkHeaderRowDef="displayedColumns;"></mat-header-row>
+            <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        </div>
+        <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+      </mat-card>
+
+    </div>
+  </div>
+</div>
